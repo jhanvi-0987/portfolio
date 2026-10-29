@@ -10,7 +10,8 @@ export const profile = {
   phone: '+91 93132 80622',
   github: '',
   linkedin: 'https://www.linkedin.com/in/makwana-jahanvi-83279826a/',
-  resume: '', // e.g. '/Jahanvi_Makwana_Resume.pdf' after placing the PDF in /public
+  resume: '/Jahanvi_Makwana_Resume.pdf',
+  resumeMeta: { pages: '1 page', size: '70 KB', format: 'PDF' },
   summary:
     'Flutter developer with 1+ years of experience shipping cross-platform apps. I work on SmartOn, an AI-powered accessibility app for blind and low-vision users — from native BLE smart-glasses integrations to voice AI, document reading and subscriptions.',
 }
@@ -89,7 +90,7 @@ export const projects = [
       'JWT authentication with refresh-token rotation, role-based permissions and workspace invitations.',
       'Task status and priority workflows to help teams organize work and track progress.',
     ],
-    repo: '',
+    repo: 'https://github.com/jhanvi-0987/teamflow-front',
     accent: '#7c5cff',
   },
   {
@@ -101,7 +102,7 @@ export const projects = [
       'OTP and Google sign-in, push notifications, reminders and a feature-first architecture.',
       'REST APIs and Provider state management keeping shared list updates in sync.',
     ],
-    repo: '',
+    repo: 'https://github.com/jhanvi-4103/grocery_flutter',
     accent: '#22d3ee',
   },
 ]

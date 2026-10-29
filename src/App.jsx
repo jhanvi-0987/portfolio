@@ -14,6 +14,7 @@ import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Work from './components/Work'
 import Contact, { Education } from './components/Contact'
+import Resume from './components/Resume'
 import Cursor from './components/Cursor'
 import Preloader from './components/Preloader'
 
@@ -78,6 +79,7 @@ export default function App() {
         <Experience />
         <Work />
         <Education />
+        <Resume />
         <Contact />
       </main>
       <footer>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUp, Bug, Coins, HelpCircle, Mail, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUp, Bug, Coins, HelpCircle, Download, Mail, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
 import { profile } from '../data/portfolio'
 import { isSoundOn, setSoundOn, subscribeSound } from '../sound'
 import { LinkedinIcon } from '../components/ui'
@@ -134,6 +134,7 @@ export default function Game({ onExit }) {
           <p>{hud.coins}/{hud.totalCoins} skill coins · {hud.bugs} bugs fixed · {hud.details}/{hud.totalDetails} details unlocked</p>
           <div className="g-actions">
             <a className="btn primary sm" href={`mailto:${profile.email}`}><Mail size={15} /> {profile.email}</a>
+            {profile.resume && <a className="btn ghost sm" href={profile.resume} download="Jahanvi_Makwana_Resume.pdf" data-sound="success"><Download size={15} /> Resume</a>}
             {profile.linkedin && <a className="btn ghost sm" href={profile.linkedin} target="_blank" rel="noreferrer"><LinkedinIcon width="15" height="15" /> LinkedIn</a>}
             <button className="btn ghost sm" onClick={replay}><RotateCcw size={14} /> Play again</button>
             <button className="btn ghost sm" onClick={onExit}>Back to portfolio</button>
