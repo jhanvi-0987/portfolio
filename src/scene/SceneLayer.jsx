@@ -21,7 +21,7 @@ function hasWebGL() {
   }
 }
 
-export default function SceneLayer({ dark }) {
+export default function SceneLayer({ dark, paused }) {
   const [ok, setOk] = useState(false)
   useEffect(() => setOk(hasWebGL()), [])
   if (!ok) return null
@@ -29,7 +29,7 @@ export default function SceneLayer({ dark }) {
     <div className="scene-layer" aria-hidden="true">
       <Boundary>
         <Suspense fallback={null}>
-          <Scene dark={dark} />
+          <Scene dark={dark} paused={paused} />
         </Suspense>
       </Boundary>
     </div>

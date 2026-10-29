@@ -304,7 +304,7 @@ main, footer { position: relative; z-index: 1; }
 
 /* custom cursor — concentric ring + dot on the exact pointer hotspot */
 html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
-.cursor { position: fixed; top: 0; left: 0; z-index: 10001; pointer-events: none; opacity: 1; transition: opacity 0.2s; }
+.cursor { position: fixed; top: 0; left: 0; z-index: 20000; pointer-events: none; opacity: 1; transition: opacity 0.2s; }
 .cursor[data-mode='hidden'] { opacity: 0; }
 .cursor-ring, .cursor-dot { position: absolute; left: 0; top: 0; translate: -50% -50%; border-radius: 50%; }
 .cursor-ring { width: 34px; height: 34px; border: 1.5px solid var(--accent); transition: scale 0.2s, background 0.2s; }
@@ -365,3 +365,5 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+.game-btn { color: var(--accent); border-color: var(--border-strong); }

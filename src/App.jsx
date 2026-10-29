@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import Lenis from 'lenis'
@@ -17,11 +17,15 @@ import Contact, { Education } from './components/Contact'
 import Cursor from './components/Cursor'
 import Preloader from './components/Preloader'
 
+const Game = lazy(() => import('./game/Game'))
 const ids = sections.map((s) => s.id)
 
 export default function App() {
   const [theme, toggleTheme] = useTheme()
   const [loaded, setLoaded] = useState(false)
+  const [game, setGame] = useState(false)
+  const openGame = useCallback(() => setGame(true), [])
+  const closeGame = useCallback(() => setGame(false), [])
   const active = useActiveSection(ids)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
@@ -57,12 +61,17 @@ export default function App() {
     <>
       <AnimatePresence>{!loaded && <Preloader onDone={done} />}</AnimatePresence>
       <Cursor />
+      {game && (
+        <Suspense fallback={null}>
+          <Game onExit={closeGame} />
+        </Suspense>
+      )}
       <motion.div className="progress" style={{ scaleX }} />
       <div className="backdrop" aria-hidden="true" />
-      <SceneLayer dark={theme === 'dark'} />
-      <Nav active={active} theme={theme} toggleTheme={toggleTheme} />
+      <SceneLayer dark={theme === 'dark'} paused={game} />
+      <Nav active={active} theme={theme} toggleTheme={toggleTheme} onPlay={openGame} />
       <main>
-        <Hero ready={loaded} />
+        <Hero ready={loaded} onPlay={openGame} />
         <Marquee />
         <About />
         <Skills />

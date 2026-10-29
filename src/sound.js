@@ -104,6 +104,16 @@ export const sfx = {
     tone({ freq: up ? 520 : 780, to: up ? 780 : 520, dur: 0.1, type: 'triangle', vol: 0.12 })
     tone({ freq: up ? 780 : 520, to: up ? 1170 : 390, dur: 0.12, type: 'sine', vol: 0.08, delay: 0.06 })
   },
+  jump: () => tone({ freq: 330, to: 620, dur: 0.12, type: 'triangle', vol: 0.1 }),
+  coin: () => {
+    tone({ freq: 988, dur: 0.09, type: 'square', vol: 0.045 })
+    tone({ freq: 1319, dur: 0.16, type: 'square', vol: 0.045, delay: 0.07 })
+  },
+  stomp: () => {
+    tone({ freq: 260, to: 80, dur: 0.12, type: 'sine', vol: 0.22 })
+    tick({ freq: 1800, q: 1, dur: 0.04, vol: 0.18 })
+  },
+  hurt: () => tone({ freq: 320, to: 100, dur: 0.28, type: 'sawtooth', vol: 0.09 }),
   success: () => [523, 659, 784, 1047].forEach((f, i) => tone({ freq: f, dur: 0.2, vol: 0.09, delay: i * 0.07 })),
   whoosh,
   chime: () => [659, 880, 1319].forEach((f, i) => tone({ freq: f, dur: 0.4, vol: 0.07, delay: i * 0.11 })),

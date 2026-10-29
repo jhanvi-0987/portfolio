@@ -1,6 +1,6 @@
 import { useState, useSyncExternalStore } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, Moon, Sun, X, ArrowUpRight, Volume2, VolumeX } from 'lucide-react'
+import { Menu, Moon, Sun, X, ArrowUpRight, Volume2, VolumeX, Gamepad2 } from 'lucide-react'
 import { isSoundOn, setSoundOn, sfx, subscribeSound } from '../sound'
 import { profile } from '../data/portfolio'
 
@@ -13,7 +13,7 @@ export const sections = [
   { id: 'contact', label: 'Contact' },
 ]
 
-export default function Nav({ active, theme, toggleTheme }) {
+export default function Nav({ active, theme, toggleTheme, onPlay }) {
   const [open, setOpen] = useState(false)
   const sound = useSyncExternalStore(subscribeSound, isSoundOn)
   return (
@@ -36,6 +36,9 @@ export default function Nav({ active, theme, toggleTheme }) {
               </a>
             ))}
           </div>
+          <button className="icon-btn game-btn" onClick={onPlay} aria-label="Play game mode" title="Play game mode">
+            <Gamepad2 size={17} />
+          </button>
           <button className="icon-btn" data-sound="none" onClick={() => (sound ? (sfx.toggle(false), setSoundOn(false)) : setSoundOn(true))} aria-label={sound ? 'Mute sound effects' : 'Unmute sound effects'} aria-pressed={!sound}>
             {sound ? <Volume2 size={17} /> : <VolumeX size={17} />}
           </button>

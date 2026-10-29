@@ -164,11 +164,12 @@ function Rig() {
   return null
 }
 
-export default function Scene({ dark = true }) {
+export default function Scene({ dark = true, paused = false }) {
   const mobile = typeof window !== 'undefined' && window.innerWidth < 760
   return (
     <Canvas
       className="scene"
+      frameloop={paused ? 'never' : 'always'}
       dpr={[1, mobile ? 1.5 : 1.8]}
       camera={{ position: [0, 0, 7], fov: 40 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}

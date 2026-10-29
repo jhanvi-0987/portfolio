@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Download, Accessibility, Globe, Mail, Bluetooth, MousePointer2 } from 'lucide-react'
+import { ArrowRight, Download, Accessibility, Globe, Mail, Bluetooth, MousePointer2, Gamepad2 } from 'lucide-react'
 import { profile } from '../data/portfolio'
 import { useTyped } from '../hooks'
 import { GithubIcon, LinkedinIcon, SplitText } from './ui'
@@ -25,7 +25,7 @@ function FloatCard({ cls, icon, title, sub, delay, drift, ready }) {
   )
 }
 
-export default function Hero({ ready }) {
+export default function Hero({ ready, onPlay }) {
   const typed = useTyped(roles)
   const { scrollY } = useScroll()
   const opacity = useTransform(scrollY, [0, 520], [1, 0])
@@ -53,6 +53,7 @@ export default function Hero({ ready }) {
           <motion.p className="summary" {...item(5)}>{profile.summary}</motion.p>
           <motion.div className="hero-cta" {...item(6)}>
             <a href="#work" className="btn primary">View my work <ArrowRight size={17} /></a>
+            <button className="btn ghost" onClick={onPlay}><Gamepad2 size={17} /> Play game mode</button>
             {profile.resume ? (
               <a href={profile.resume} download className="btn ghost"><Download size={17} /> Resume</a>
             ) : (
